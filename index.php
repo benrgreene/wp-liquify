@@ -9,15 +9,15 @@ $loader->load(__DIR__ . "/Liquid");
 use Liquid\Liquid;
 use Liquid\Template;
 
+// Load the base template
+$templateBasePath = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'theme-templates' . DIRECTORY_SEPARATOR;
 // Get the correct template
+$templateFile     = getWPTemplateName();
+// Build out the liquid template object
+$liquid           = new Template($templateBasePath);
+$liquid->parse(file_get_contents($templateBasePath . $templateFile));
 
-
-// Load the template
-$protectedPath = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'theme-templates' . DIRECTORY_SEPARATOR;
-$liquid = new Template($protectedPath);
-$liquid->parse(file_get_contents($protectedPath . 'test.liquid'));
-
-// get the correct objects to pass to the templates
-$wp_info = array();
+// Get the correct objects to pass to the templates
+$wp_info = getWPObject();
 
 echo $liquid->render($wp_info);
