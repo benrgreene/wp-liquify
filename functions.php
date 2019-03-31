@@ -39,7 +39,13 @@ function getWPTemplateName () {
   } else if (is_front_page()) {
     $template .= 'home';
   } else {
-    $template .= 'page';
+    // Check if there is a template for the post type. If not, load the 'page' template
+    $pageType  = get_queried_object()->post_type;
+    if (file_exists(__DIR__ . "/theme-templates/{$template}{$pageType}.liquid")) {
+      $template .= $pageType;
+    } else {
+      $template .= 'page';
+    }
   }
 
   return $template . '.liquid';
