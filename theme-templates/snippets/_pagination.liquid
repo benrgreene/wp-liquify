@@ -1,0 +1,9 @@
+<div class="pagination">
+  {% if pagination.previous %}
+    <a href="{{ pagination.previous }}">Previous</a>
+  {% endif %}
+  <span>{{ pagination.page }}</span>
+  {% if pagination.next %}
+    <a href="{{ pagination.next }}">Next</a>
+  {% endif %}
+</div>
