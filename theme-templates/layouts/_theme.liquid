@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    {% include 'snippets/globals/header' %}
+    <title>{{ page.title }}</title>
   </head>
   <body>
+    {% include 'snippets/globals/header' %}
     {% block content %}{% endblock %}
+    {% include 'snippets/globals/footer' %}
+    {% block scripts %}{% endblock %}
   </body>
 </html>

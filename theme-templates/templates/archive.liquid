@@ -3,9 +3,9 @@
 {% block content %}
   <section class="post__archive">
     {% for post in posts %}
-      <article class="post post--{{ post.id }}">
-        <a href="{{ post.url }}" class="post__title">{{ post.title }}</a>
-        <div class="post__content">{{ post.content }}</div>
+      <article class="post post--{{ post.ID }}">
+        <a href="{{ post.guid }}" class="post__title">{{ post.post_title }}</a>
+        <div class="post__content">{{ post.post_content }}</div>
       </article>
     {% endfor %}
   </section>

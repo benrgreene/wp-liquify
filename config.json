@@ -1,0 +1,16 @@
+{
+  "sections": [
+    {
+      "name": "Extra Settings",
+      "description": "test settings",
+      "settings": [
+        {
+          "id": "my_test_settings",
+          "label": "My Test Settings",
+          "default": "This is the default",
+          "type": "text"
+        }
+      ]
+    }
+  ]
+}

@@ -1,11 +1,18 @@
 <?php
 
+// Load theme core files
+include 'core/filters.php';
+include 'core/actions.php';
+
 // Get all the WP Object info to pass to liquid
 function getWPObject () {
   global $wp_query;
 
   $data  = array();
   $posts = getWPPostObjects();
+
+  // Base page info
+  $data['page'] = apply_filters( 'liquify/page_info', array() );
 
   // Add the post object(s)
   if (1 == count($posts)) {
@@ -59,12 +66,8 @@ function getWPPostObjects () {
   if ( have_posts() ) { 
     while ( have_posts() ) {
       the_post();
-      $toReturn[] = array(
-        'id'       => $post->ID,
-        'title'    => $post->post_title,
-        'content'  => $post->post_content,
-        'url'      => get_permalink(),
-      );
+      $toReturn[] = $post->to_array();
+      //error_log(print_r($post->to_array(),true));
     }
   }
 
